@@ -113,16 +113,16 @@ export async function getFilteredShipwrecks(name?: string, year_start?: number, 
     const values: (string | number)[] = [];
     let i = 1;
 
-    // ILIKE so it's not case sensitive
-    if (name) {
+    // ILIKE so it's not case sensitive and accepts a subset of the name
+    if (name !== undefined) {
         whereClauses.push(`ship_name ILIKE $${i++}`);
         values.push(`%${name}%`);
     }
-    if (year_start) {
+    if (year_start !== undefined) {
         whereClauses.push(`year_built >= $${i++}`);
         values.push(year_start);
     }
-    if (year_end) {
+    if (year_end !== undefined) {
         whereClauses.push(`year_built <= $${i++}`);
         values.push(year_end);
     }
