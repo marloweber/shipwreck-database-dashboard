@@ -34,3 +34,14 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+shipwrecks (
+  id (PRIMARY KEY), ship_name, aka, owner, vessel_type, year_built, build_location,
+  date_lost, year_lost, month_lost, day_lost, location_lost,
+  latitude_lost, longitude_lost, cause_of_loss, construction, flag,
+  length, beam, draft, gross_tonnage, net_tonnage,
+  home_port, departure_port, destination_port, master,
+  num_crew, num_pass, lives_lost,
+  ship_value, cargo_value, nature_of_cargo, uslss_station_name
+)
