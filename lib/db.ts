@@ -4,7 +4,7 @@ import { neon } from '@neondatabase/serverless';
 
 // Need transaction here
 export async function createShipwreck(formData: FormData) {
-    const sql = neon(`${process.env.DATABASE_URL}`);
+    const sql = neon(`${process.env.STORAGE_DATABASE_URL}`);
 
     const ship_name = formData.get('ship_name');
     const aka = formData.get('aka');
@@ -70,7 +70,7 @@ export async function createShipwreck(formData: FormData) {
 }
 
 export async function getShipwrecks() {
-    const sql = neon(`${process.env.DATABASE_URL}`);
+    const sql = neon(`${process.env.STORAGE_DATABASE_URL}`);
 
     const result = await sql.query(`
         SELECT * FROM shipwrecks 
@@ -80,7 +80,7 @@ export async function getShipwrecks() {
 }
 
 export async function getShipwreck(id: number) {
-    const sql = neon(`${process.env.DATABASE_URL}`);
+    const sql = neon(`${process.env.STORAGE_DATABASE_URL}`);
 
     const result = await sql.query(`
         SELECT * FROM shipwrecks 
@@ -93,7 +93,7 @@ export async function getShipwreck(id: number) {
 type FilterBy = [field: string, min: number, max: number];
 
 export async function getSortedShipwrecks(sortBy: string) {
-    const sql = neon(`${process.env.DATABASE_URL}`);
+    const sql = neon(`${process.env.STORAGE_DATABASE_URL}`);
     const validatedSortBy = sortBy || "ship_name";
 
     const result = await sql.query(`
@@ -107,7 +107,7 @@ export async function getSortedShipwrecks(sortBy: string) {
 
 // Benefits from Indexes
 export async function getFilteredShipwrecks(name?: string, year_start?: number, year_end?: number) {
-    const sql = neon(`${process.env.DATABASE_URL}`);
+    const sql = neon(`${process.env.STORAGE_DATABASE_URL}`);
 
     const whereClauses: string[] = [];
     const values: (string | number)[] = [];
@@ -137,7 +137,7 @@ export async function getFilteredShipwrecks(name?: string, year_start?: number, 
 }
 
 export async function deleteShipwreck(id: number) {
-    const sql = neon(`${process.env.DATABASE_URL}`);
+    const sql = neon(`${process.env.STORAGE_DATABASE_URL}`);
 
     const result = await sql.query(`
         DELETE FROM shipwrecks 
@@ -148,7 +148,7 @@ export async function deleteShipwreck(id: number) {
 }
 
 export async function editShipwreck(id: number, formData: FormData) {
-    const sql = neon(`${process.env.DATABASE_URL}`);
+    const sql = neon(`${process.env.STORAGE_DATABASE_URL}`);
 
     const ship_name = formData.get('ship_name');
     const aka = formData.get('aka');
